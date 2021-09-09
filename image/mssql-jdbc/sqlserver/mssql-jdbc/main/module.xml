@@ -1,0 +1,9 @@
+<module xmlns="urn:jboss:module:1.5" name="com.microsoft.sqlserver.mssql-jdbc">
+    <resources>
+        <resource-root path="mssql-jdbc-8.4.1.jre11.jar" />
+    </resources>
+    <dependencies>
+        <module name="javax.api"/>
+        <module name="javax.transaction.api"/>
+    </dependencies>
+</module>

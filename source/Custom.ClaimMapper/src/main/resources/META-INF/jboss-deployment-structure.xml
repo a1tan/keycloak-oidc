@@ -1,0 +1,18 @@
+<jboss-deployment-structure>
+    <deployment>
+        <dependencies>
+            <!-- <module name="com.microsoft.sqlserver.mssql-jdbc" services="import"/> -->
+            <!-- <module name="net.sourceforge.jtds.jtds"/> -->
+            <module name="com.microsoft.sqlserver.jdbc"/>
+            <module name="org.keycloak.keycloak-core"/>
+            <module name="org.keycloak.keycloak-server-spi"/>
+            <module name="org.keycloak.keycloak-server-spi-private"/>
+            <module name="org.keycloak.keycloak-services"/>
+            
+            <!-- <module name="org.keycloak.keycloak-saml-core"/>
+            <module name="org.keycloak.keycloak-saml-adapter-core"/>
+            <module name="org.keycloak.keycloak-saml-adapter-api-public"/>
+            <module name="org.keycloak.keycloak-saml-core-public"/> -->
+        </dependencies>
+    </deployment>
+</jboss-deployment-structure>
