@@ -95,7 +95,7 @@ public class CustomOIDCProtocolMapper extends AbstractOIDCProtocolMapper
 
     @Override
     public String getDisplayType() {
-        return "Juga Claim Mapper";
+        return "Claim Mapper";
     }
 
     @Override

@@ -273,6 +273,6 @@ public class DemoUserStorageProviderFactory implements UserStorageProviderFactor
 
     @Override
     public String getId() {
-        return "ticaret-bakanligi-user-provider";
+        return "user-provider";
     }
 }
