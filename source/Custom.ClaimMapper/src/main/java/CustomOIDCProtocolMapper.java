@@ -140,7 +140,7 @@ public class CustomOIDCProtocolMapper extends AbstractOIDCProtocolMapper
                 ResultSet rs;
                 if(mappingModel.getConfig().get(MAPPER_TYPE).equals("Roles")){
                     // AccessToken.Access roles = new AccessToken.Access();
-                    rs = stmt.executeQuery("SELECT distinct YTK.LNKGENEL+YTK.LNKOZL AS LINK FROM [BTS].[dbo].[KLNYTKPRJ] KYP INNER JOIN [BTS].[dbo].PRJTML PT ON KYP.PRJKOD=PT.PRJKOD  INNER JOIN BTS.[dbo].[KLNYTKTML] YTK  ON YTK.KLNADI=KYP.KLNADI INNER JOIN [AS400].[dbo].[PRSKMLTML] PRS  ON PRS.TCKMLNMR=YTK.KLNTC   WHERE PRS.PBIK = '"+userSession.getLoginUsername()+"'");
+                    rs = stmt.executeQuery("SELECT Personnel WHERE UserName = '"+userSession.getLoginUsername()+"'");
                     List<String> roleArray = new ArrayList<>();
                     while (rs.next()) {
                         String role = rs.getString("LINK");
@@ -157,10 +157,10 @@ public class CustomOIDCProtocolMapper extends AbstractOIDCProtocolMapper
                 if(mappingModel.getConfig().get(MAPPER_TYPE).equals("Projects")){
                     // AccessToken.Access roles2 = new AccessToken.Access();
                     Statement stmt2 = conn.createStatement();
-                    ResultSet rs2 = stmt2.executeQuery("SELECT PT.* FROM [BTS].[dbo].[KLNYTKPRJ] KYP INNER JOIN [BTS].[dbo].PRJTML PT ON KYP.PRJKOD=PT.PRJKOD  INNER JOIN BTS.[dbo].[KLNYTKTML] YTK  ON YTK.KLNADI=KYP.KLNADI INNER JOIN [AS400].[dbo].[PRSKMLTML] PRS  ON PRS.TCKMLNMR=YTK.KLNTC   WHERE PRS.PBIK = '"+userSession.getLoginUsername()+"'");
+                    ResultSet rs2 = stmt.executeQuery("SELECT Personnel WHERE UserName = '"+userSession.getLoginUsername()+"'");
                     List<String> projectArray = new ArrayList<>();
                     while (rs2.next()) {
-                        String project = rs2.getString("PRJKOD");
+                        String project = rs2.getString("Proje");
                         // System.out.println(project);
                         projectArray.add(project);
                     }
@@ -175,10 +175,10 @@ public class CustomOIDCProtocolMapper extends AbstractOIDCProtocolMapper
 
                 if(mappingModel.getConfig().get(MAPPER_TYPE).equals("Identity Number")){
                     Statement stmt2 = conn.createStatement();
-                    ResultSet rs2 = stmt2.executeQuery("SELECT TCKMLNMR  FROM dbo.PRSKMLTML where PBIK= '"+userSession.getLoginUsername()+"'");
+                    ResultSet rs2 = stmt.executeQuery("SELECT Personnel WHERE UserName = '"+userSession.getLoginUsername()+"'");
                     String identityNumber = "";
                     while (rs2.next()) {
-                        identityNumber = rs2.getString("TCKMLNMR");
+                        identityNumber = rs2.getString("PerNum");
                     }
 
                     token.getOtherClaims().put("identity_number", identityNumber);
